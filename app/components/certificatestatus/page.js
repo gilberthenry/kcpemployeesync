@@ -10,6 +10,7 @@ const formatDate = (dateString) => {
 
 // Helper function to format certificate type
 const formatCertificateType = (type) => {
+  if (!type) return 'N/A';
   return type
     .split('_')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))

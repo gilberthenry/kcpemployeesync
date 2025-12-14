@@ -1,4 +1,4 @@
-import api from './api';
+import api from '../apiClient';
 
 const authService = {
   login: async (credentials) => {
@@ -12,17 +12,18 @@ const authService = {
   },
 
   logout: () => {
-    // Depending on your backend, you might want to invalidate the token
-    console.log('Logged out');
+    localStorage.removeItem('user');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   },
 
   forgotPassword: async (email) => {
-    const response = await api.post('/auth/forgot-password', email);
+    const response = await api.post('/auth/forgot-password', { email });
     return response.data;
   },
 
-  resetPassword: async (data) => {
-    const response = await api.post(`/auth/reset-password/${data.token}`, { password: data.password });
+  resetPassword: async (token, password) => {
+    const response = await api.post(`/auth/reset-password/${token}`, { password });
     return response.data;
   },
 };

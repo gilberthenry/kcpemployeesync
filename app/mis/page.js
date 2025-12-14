@@ -67,28 +67,28 @@ export default function MISDashboard() {
           value={totalEmployees} 
           subtext={`${activeEmployees} Active Users`}
           icon={<Users size={24} />}
-          gradient="bg-gradient-to-br from-emerald-500 to-emerald-600"
+          gradient="bg-linear-to-br from-emerald-500 to-emerald-600"
         />
         <StatCard 
           title="User Accounts" 
           value={totalAccounts} 
           subtext={`${disabledAccounts} Disabled Accounts`}
           icon={<UserCog size={24} />}
-          gradient="bg-gradient-to-br from-teal-500 to-teal-600"
+          gradient="bg-linear-to-br from-teal-500 to-teal-600"
         />
         <StatCard 
           title="Audit Logs" 
           value={auditLogs.length} 
           subtext={`${recentAuditLogs} Recent Events`}
           icon={<ClipboardList size={24} />}
-          gradient="bg-gradient-to-br from-cyan-500 to-cyan-600"
+          gradient="bg-linear-to-br from-cyan-500 to-cyan-600"
         />
         <StatCard 
           title="System Status" 
           value="Healthy" 
           subtext="All services operational"
           icon={<Server size={24} />}
-          gradient="bg-gradient-to-br from-green-500 to-green-600"
+          gradient="bg-linear-to-br from-green-500 to-green-600"
         />
       </div>
 

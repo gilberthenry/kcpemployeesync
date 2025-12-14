@@ -55,7 +55,7 @@ export default function HRLeave() {
         {/* Side Content: Settings */}
         <div className="space-y-6">
           {/* School Year Display */}
-          <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl shadow-lg p-6 text-white">
+          <div className="bg-linear-to-br from-indigo-500 to-indigo-600 rounded-2xl shadow-lg p-6 text-white">
             <div className="flex items-center mb-2">
               <Calendar size={20} className="mr-2" />
               <h3 className="text-lg font-semibold">Current School Year</h3>
@@ -75,7 +75,7 @@ export default function HRLeave() {
             </p>
             <button 
               onClick={handleResetCredits}
-              className="w-full inline-flex justify-center items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
+              className="w-full inline-flex justify-center items-center px-4 py-2 bg-linear-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
             >
               Reset Credits Now
             </button>
@@ -111,7 +111,7 @@ export default function HRLeave() {
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-lg p-6 text-white">
+          <div className="bg-linear-to-br from-purple-500 to-purple-600 rounded-2xl shadow-lg p-6 text-white">
             <h3 className="text-lg font-semibold mb-4">Leave Features</h3>
             <div className="space-y-3 text-sm">
               <div className="flex justify-between items-center pb-2 border-b border-white/20">

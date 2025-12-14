@@ -300,7 +300,7 @@ export default function Sidebar({ role, unreadCount = 0 }) {
     <aside className={`w-72 ${theme.bg} text-white h-screen flex flex-col shadow-2xl transition-all duration-300`}>
       {/* Logo Area */}
       <div className="p-6 border-b border-gray-700/50 flex items-center space-x-3">
-        <div className="w-10 h-10 rounded-xl shadow-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
+        <div className="w-10 h-10 rounded-xl shadow-lg bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
           K
         </div>
         <div>

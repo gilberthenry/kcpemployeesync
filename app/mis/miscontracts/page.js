@@ -174,7 +174,7 @@ export default function MISContracts() {
 
       {/* Contract Rules Configuration (MIS Only) */}
       {showRulesConfig && (
-        <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-300 rounded-2xl shadow-lg p-6">
+        <div className="bg-linear-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-300 rounded-2xl shadow-lg p-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <Shield size={24} className="text-emerald-600 mr-3" />
@@ -355,7 +355,7 @@ export default function MISContracts() {
             </button>
             <button
               onClick={handleSaveRules}
-              className="flex items-center px-6 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-md hover:shadow-lg"
+              className="flex items-center px-6 py-2 bg-linear-to-r from-emerald-600 to-emerald-700 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-md hover:shadow-lg"
             >
               <CheckCircle size={18} className="mr-2" />
               Save Configuration

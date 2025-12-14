@@ -1,6 +1,8 @@
+"use client"
+
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit, Archive, ArchiveRestore, Briefcase, Users, X, Building2 } from 'lucide-react';
-import departmentService from '../../services/departmentService';
+import departmentService from '../../services/departmentservice';
 import { useToast } from '../../context/ToastContext';
 
 export default function HRDepartments() {

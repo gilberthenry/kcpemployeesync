@@ -90,28 +90,28 @@ export default function EmployeeDashboard() {
           value={activeContract ? 'Active' : 'No Active'} 
           subtext={activeContract ? `${daysUntilExpiry} days remaining` : 'Contact HR'}
           icon={<FileText size={24} />}
-          gradient="bg-gradient-to-br from-blue-500 to-blue-600"
+          gradient="bg-linear-to-br from-blue-500 to-blue-600"
         />
         <StatCard 
           title="Leave Credits" 
           value={`${maxLeave - totalUsedLeaves} Left`} 
           subtext={`${totalUsedLeaves} days used this year`}
           icon={<CalendarDays size={24} />}
-          gradient="bg-gradient-to-br from-purple-500 to-purple-600"
+          gradient="bg-linear-to-br from-purple-500 to-purple-600"
         />
         <StatCard 
           title="Documents" 
           value={verifiedDocs} 
           subtext={`${pendingDocs} pending verification`}
           icon={<FolderOpen size={24} />}
-          gradient="bg-gradient-to-br from-emerald-500 to-emerald-600"
+          gradient="bg-linear-to-br from-emerald-500 to-emerald-600"
         />
         <StatCard 
           title="Notifications" 
           value={unreadNotifications} 
           subtext="Unread messages"
           icon={<Bell size={24} />}
-          gradient="bg-gradient-to-br from-orange-500 to-orange-600"
+          gradient="bg-linear-to-br from-orange-500 to-orange-600"
         />
       </div>
 
@@ -174,7 +174,7 @@ export default function EmployeeDashboard() {
         <div className="space-y-8">
           {/* Profile Summary */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-blue-500 to-purple-600"></div>
+            <div className="absolute top-0 left-0 w-full h-24 bg-linear-to-r from-blue-500 to-purple-600"></div>
             <div className="relative mt-8">
               <div className="w-20 h-20 mx-auto bg-white rounded-full p-1 shadow-lg">
                 <div className="w-full h-full rounded-full bg-gray-200 flex items-center justify-center text-2xl text-gray-500">

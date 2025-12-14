@@ -56,7 +56,7 @@ export default function DisciplinaryReports() {
         
         .bg-gray-50, .bg-blue-50, .bg-green-50, 
         .bg-yellow-50, .bg-red-50, .bg-orange-50, .bg-gray-100,
-        .bg-gradient-to-br {
+        .bg-linear-to-br {
           background: white !important;
           background-image: none !important;
         }
@@ -429,7 +429,7 @@ export default function DisciplinaryReports() {
 
       {/* Statistics Cards */}
       <div className="stats-grid grid grid-cols-1 md:grid-cols-4 gap-4 page-break-avoid">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-sm border border-blue-200 hover:shadow-md transition-shadow">
+        <div className="bg-linear-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-sm border border-blue-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-blue-600">Total Issues</p>
@@ -443,7 +443,7 @@ export default function DisciplinaryReports() {
           </div>
         </div>
         
-        <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm border border-red-200 hover:shadow-md transition-shadow">
+        <div className="bg-linear-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm border border-red-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-red-600">Needs Memos</p>
@@ -457,7 +457,7 @@ export default function DisciplinaryReports() {
           </div>
         </div>
         
-        <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl shadow-sm border border-orange-200 hover:shadow-md transition-shadow">
+        <div className="bg-linear-to-br from-orange-50 to-orange-100 p-6 rounded-xl shadow-sm border border-orange-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-orange-600">Attendance Issues</p>
@@ -471,7 +471,7 @@ export default function DisciplinaryReports() {
           </div>
         </div>
         
-        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm border border-yellow-200 hover:shadow-md transition-shadow">
+        <div className="bg-linear-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm border border-yellow-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-yellow-600">Unapproved Absences</p>
@@ -517,7 +517,7 @@ export default function DisciplinaryReports() {
       {stats.needsMemos > 0 && (
         <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg no-print">
           <div className="flex items-start">
-            <svg className="w-6 h-6 text-red-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-red-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
             <div className="ml-3">

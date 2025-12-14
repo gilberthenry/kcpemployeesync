@@ -263,7 +263,7 @@ export default function HRDashboard() {
   };
 
   return (
-    <div className="p-6 lg:p-8 bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <div className="p-6 lg:p-8 bg-linear-to-br from-gray-50 to-gray-100 min-h-screen">
       {/* Header Section */}
       <div className="mb-6">
         <div className="flex items-center justify-between">
@@ -352,17 +352,17 @@ export default function HRDashboard() {
               <p className="text-sm text-gray-500 mt-1">Current leave requests status</p>
             </div>
             <div className="grid grid-cols-3 gap-3 mb-6">
-              <div className="text-center p-3 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200">
+              <div className="text-center p-3 bg-linear-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200">
                 <Clock size={20} className="mx-auto text-blue-600 mb-1" />
                 <p className="text-2xl font-bold text-gray-900">{stats.leaves.pending}</p>
                 <p className="text-xs text-gray-600 mt-1">Pending</p>
               </div>
-              <div className="text-center p-3 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border border-green-200">
+              <div className="text-center p-3 bg-linear-to-br from-green-50 to-green-100 rounded-xl border border-green-200">
                 <CheckCircle size={20} className="mx-auto text-green-600 mb-1" />
                 <p className="text-2xl font-bold text-gray-900">{stats.leaves.approved}</p>
                 <p className="text-xs text-gray-600 mt-1">Approved</p>
               </div>
-              <div className="text-center p-3 bg-gradient-to-br from-red-50 to-red-100 rounded-xl border border-red-200">
+              <div className="text-center p-3 bg-linear-to-br from-red-50 to-red-100 rounded-xl border border-red-200">
                 <AlertCircle size={20} className="mx-auto text-red-600 mb-1" />
                 <p className="text-2xl font-bold text-gray-900">{stats.leaves.rejected}</p>
                 <p className="text-xs text-gray-600 mt-1">Rejected</p>
@@ -387,7 +387,7 @@ export default function HRDashboard() {
           </div>
 
           {/* System Quick Stats */}
-          <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-lg p-6 text-white">
+          <div className="bg-linear-to-br from-purple-500 to-purple-600 rounded-2xl shadow-lg p-6 text-white">
             <h3 className="text-xl font-bold mb-4 flex items-center">
               <BarChart3 size={24} className="mr-2" />
               System Overview
@@ -510,7 +510,7 @@ export default function HRDashboard() {
       {/* Quick Action Buttons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <button className="group p-5 bg-white border-2 border-gray-200 rounded-xl hover:border-purple-400 hover:shadow-xl transition-all text-left relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10">
             <div className="p-3 bg-purple-100 rounded-lg w-fit mb-3 group-hover:scale-110 transition-transform">
               <UserPlus size={24} className="text-purple-600" />
@@ -521,7 +521,7 @@ export default function HRDashboard() {
         </button>
         
         <button className="group p-5 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-400 hover:shadow-xl transition-all text-left relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10">
             <div className="p-3 bg-blue-100 rounded-lg w-fit mb-3 group-hover:scale-110 transition-transform">
               <FileText size={24} className="text-blue-600" />
@@ -532,7 +532,7 @@ export default function HRDashboard() {
         </button>
         
         <button className="group p-5 bg-white border-2 border-gray-200 rounded-xl hover:border-indigo-400 hover:shadow-xl transition-all text-left relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-indigo-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10">
             <div className="p-3 bg-indigo-100 rounded-lg w-fit mb-3 group-hover:scale-110 transition-transform">
               <BarChart3 size={24} className="text-indigo-600" />
@@ -543,7 +543,7 @@ export default function HRDashboard() {
         </button>
         
         <button className="group p-5 bg-white border-2 border-gray-200 rounded-xl hover:border-pink-400 hover:shadow-xl transition-all text-left relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-pink-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10">
             <div className="p-3 bg-pink-100 rounded-lg w-fit mb-3 group-hover:scale-110 transition-transform">
               <CalendarDays size={24} className="text-pink-600" />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { FileText, Calendar, FileCheck, AlertOctagon, Users, Contact } from 'lucide-react';
 
 export default function HRReports() {
@@ -17,9 +17,9 @@ export default function HRReports() {
       <h1 className="text-3xl font-bold text-gray-800 mb-6">HR Reports</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {reports.map((report, index) => (
-          <Link 
-            key={index} 
-            to={report.path} 
+          <Link
+            key={index}
+            href={report.path}
             className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center text-center hover:shadow-lg hover:bg-purple-50 transition-all duration-300 group"
           >
             <div className="text-purple-600 mb-4 group-hover:scale-110 transition-transform">

@@ -60,7 +60,7 @@ export default function MISLeaveManagement() {
         {/* Side Content: Settings */}
         <div className="xl:col-span-1 space-y-6 order-1 xl:order-2">
           {/* School Year Display */}
-          <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl shadow-lg p-4 md:p-6 text-white">
+          <div className="bg-linear-to-br from-indigo-500 to-indigo-600 rounded-2xl shadow-lg p-4 md:p-6 text-white">
             <div className="flex items-center mb-2">
               <Calendar size={18} className="mr-2" />
               <h3 className="text-base md:text-lg font-semibold">Current School Year</h3>
@@ -80,7 +80,7 @@ export default function MISLeaveManagement() {
             </p>
             <button 
               onClick={() => setShowSettings(!showSettings)}
-              className="w-full inline-flex justify-center items-center px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all shadow-md hover:shadow-lg text-sm"
+              className="w-full inline-flex justify-center items-center px-4 py-2 bg-linear-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all shadow-md hover:shadow-lg text-sm"
             >
               <Settings size={16} className="mr-2" />
               {showSettings ? 'Hide Settings' : 'Configure Settings'}
@@ -98,7 +98,7 @@ export default function MISLeaveManagement() {
             </p>
             <button 
               onClick={handleResetCredits}
-              className="w-full inline-flex justify-center items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg text-sm"
+              className="w-full inline-flex justify-center items-center px-4 py-2 bg-linear-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg text-sm"
             >
               Reset Credits Now
             </button>
@@ -134,7 +134,7 @@ export default function MISLeaveManagement() {
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-lg p-4 md:p-6 text-white">
+          <div className="bg-linear-to-br from-purple-500 to-purple-600 rounded-2xl shadow-lg p-4 md:p-6 text-white">
             <h3 className="text-base md:text-lg font-semibold mb-4">Leave Features</h3>
             <div className="space-y-2 md:space-y-3 text-xs md:text-sm">
               <div className="flex justify-between items-center pb-2 border-b border-white/20">
@@ -156,7 +156,7 @@ export default function MISLeaveManagement() {
 
       {/* System-Wide Settings Panel (Collapsible) */}
       {showSettings && (
-        <div className="mt-6 bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-200 rounded-2xl shadow-lg p-4 md:p-6">
+        <div className="mt-6 bg-linear-to-br from-purple-50 to-indigo-50 border-2 border-purple-200 rounded-2xl shadow-lg p-4 md:p-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
             <div className="flex items-center">
               <Shield size={20} className="text-purple-600 mr-3" />
@@ -320,7 +320,7 @@ export default function MISLeaveManagement() {
             </button>
             <button
               onClick={handleSaveSettings}
-              className="flex items-center justify-center px-6 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all shadow-md hover:shadow-lg text-sm md:text-base"
+              className="flex items-center justify-center px-6 py-2 bg-linear-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all shadow-md hover:shadow-lg text-sm md:text-base"
             >
               <CheckCircle size={16} className="mr-2" />
               Save Configuration

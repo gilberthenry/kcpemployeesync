@@ -354,7 +354,7 @@ function UploadModal({ request, selectedFile, onFileChange, onClose, onUpload, l
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full">
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-purple-500 to-purple-600 px-8 py-6 text-white">
+        <div className="bg-linear-to-r from-purple-500 to-purple-600 px-8 py-6 text-white">
           <h2 className="text-2xl font-bold">Upload Certificate File</h2>
           <p className="text-purple-100 text-sm mt-1">Upload the generated certificate for the employee</p>
         </div>
@@ -459,7 +459,7 @@ function ReviewModal({ request, onClose, onApprove, onReject, loading }) {
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-8 py-6 text-white">
+        <div className="bg-linear-to-r from-blue-500 to-blue-600 px-8 py-6 text-white">
           <h2 className="text-2xl font-bold">Review Certificate Request</h2>
           <p className="text-blue-100 text-sm mt-1">Evaluate and process this request</p>
         </div>

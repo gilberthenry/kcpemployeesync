@@ -6,7 +6,7 @@ export default function Toast({ message, time, onClose }) {
     <div className="fixed top-24 right-8 bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-4 border border-gray-100 
                     animate-slide-in z-50 transition-all duration-500 ease-in-out transform hover:scale-105 max-w-sm">
       <div className="flex items-start space-x-3">
-        <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+        <div className="shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
           <Bell size={20} />
         </div>
         <div className="flex-1">

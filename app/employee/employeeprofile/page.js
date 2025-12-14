@@ -193,10 +193,10 @@ export default function EmployeeProfile() {
 
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
           {/* Header Banner */}
-          <div className="h-32 bg-gradient-to-r from-blue-600 to-purple-600 relative">
+          <div className="h-32 bg-linear-to-r from-blue-600 to-purple-600 relative">
             <div className="absolute -bottom-16 left-8">
               <div className="w-32 h-32 rounded-2xl bg-white p-1 shadow-lg">
-                <div className="w-full h-full rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                <div className="w-full h-full rounded-xl bg-linear-to-br from-blue-100 to-purple-100 flex items-center justify-center">
                   <User size={64} className="text-blue-600" />
                 </div>
               </div>
@@ -314,7 +314,7 @@ export default function EmployeeProfile() {
             {contract && (
               <div className="mt-8 pt-8 border-t">
                 <h3 className="text-lg font-bold text-gray-800 mb-4">Current Contract</h3>
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
+                <div className="bg-linear-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <p className="text-xs text-gray-500 mb-1">Contract Type</p>

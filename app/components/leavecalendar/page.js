@@ -554,7 +554,7 @@ export default function LeaveCalendar() {
     return (
       <div className="space-y-4 md:space-y-6">
         {/* Employees on Leave Today */}
-        <div className="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl p-4 md:p-6 shadow-lg">
+        <div className="bg-linear-to-br from-purple-500 to-purple-600 text-white rounded-2xl p-4 md:p-6 shadow-lg">
           <h3 className="text-base md:text-lg font-bold mb-4 flex items-center gap-2">
             <Calendar size={20} />
             Employees on Leave Today

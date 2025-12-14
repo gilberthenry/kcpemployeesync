@@ -369,7 +369,7 @@ function ViewDocumentModal({ document, onClose }) {
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col">
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4 text-white flex justify-between items-center rounded-t-2xl">
+        <div className="bg-linear-to-r from-blue-500 to-blue-600 px-6 py-4 text-white flex justify-between items-center rounded-t-2xl">
           <div>
             <h2 className="text-xl font-bold">View Document</h2>
             <p className="text-blue-100 text-sm">{formatDocumentType(document.type)} - {document.Employee?.fullName}</p>
@@ -431,7 +431,7 @@ function ReviewModal({ document, onClose, onApprove, onReject, loading }) {
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-purple-500 to-purple-600 px-8 py-6 text-white">
+        <div className="bg-linear-to-r from-purple-500 to-purple-600 px-8 py-6 text-white">
           <h2 className="text-2xl font-bold">Review Document</h2>
           <p className="text-purple-100 text-sm mt-1">Approve or reject this document submission</p>
         </div>

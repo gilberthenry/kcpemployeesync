@@ -1,6 +1,7 @@
+"use client"
 import React, { useContext, useState, useRef, useEffect } from 'react';
-import { NotificationContext } from '../context/NotificationContext';
-import { AuthContext } from '../context/AuthContext';
+import { NotificationContext } from '../../context/NotificationContext';
+import { AuthContext } from '../../context/AuthContext';
 import { Bell, X, Clock, AlertCircle, CheckCircle2, Info } from 'lucide-react';
 
 export default function NotificationBell() {
@@ -30,12 +31,12 @@ export default function NotificationBell() {
   const getNotificationIcon = (message) => {
     const msg = message.toLowerCase();
     if (msg.includes('error') || msg.includes('critical') || msg.includes('failed')) {
-      return <AlertCircle size={18} className="text-red-500 flex-shrink-0" />;
+      return <AlertCircle size={18} className="text-red-500 shrink-0" />;
     }
     if (msg.includes('success') || msg.includes('approved') || msg.includes('completed')) {
-      return <CheckCircle2 size={18} className="text-green-500 flex-shrink-0" />;
+      return <CheckCircle2 size={18} className="text-green-500 shrink-0" />;
     }
-    return <Info size={18} className="text-blue-500 flex-shrink-0" />;
+    return <Info size={18} className="text-blue-500 shrink-0" />;
   };
 
   const formatTime = (time) => {
@@ -94,7 +95,7 @@ export default function NotificationBell() {
       >
         <Bell size={22} className="text-gray-600 group-hover:text-gray-800 transition-colors" />
         {unreadCount > 0 && (
-          <span className={`absolute -top-1 -right-1 bg-gradient-to-r ${colors.badge} text-white text-xs font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 border-2 border-white shadow-lg animate-pulse`}>
+          <span className={`absolute -top-1 -right-1 bg-linear-to-r ${colors.badge} text-white text-xs font-bold rounded-full min-w-5 h-5 flex items-center justify-center px-1.5 border-2 border-white shadow-lg animate-pulse`}>
             {unreadCount > 99 ? '99+' : unreadCount}
           </span>
         )}
@@ -104,7 +105,7 @@ export default function NotificationBell() {
         <div className="absolute right-0 mt-3 w-96 bg-white shadow-2xl rounded-2xl border border-gray-200 z-50 overflow-hidden
                         transition-all duration-200 ease-out animate-[slideDown_0.2s_ease-out]">
           {/* Header */}
-          <div className={`bg-gradient-to-r ${colors.header} px-5 py-4 flex items-center justify-between`}>
+          <div className={`bg-linear-to-r ${colors.header} px-5 py-4 flex items-center justify-between`}>
             <div>
               <h3 className="text-white font-semibold text-lg">Notifications</h3>
               <p className={`${colors.headerText} text-xs mt-0.5`}>
@@ -120,7 +121,7 @@ export default function NotificationBell() {
           </div>
 
           {/* Notifications List */}
-          <div className="max-h-[480px] overflow-y-auto">
+          <div className="max-h-120 overflow-y-auto">
             {activeNotifications.length === 0 ? (
               <div className="text-center py-12 px-4">
                 <div className="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
@@ -159,7 +160,7 @@ export default function NotificationBell() {
                         </div>
                       </div>
                       {!n.read && (
-                        <div className="flex-shrink-0">
+                        <div className="shrink-0">
                           <span className={`inline-block w-2 h-2 ${colors.dot} rounded-full`}></span>
                         </div>
                       )}

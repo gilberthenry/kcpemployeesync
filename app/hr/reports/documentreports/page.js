@@ -56,7 +56,7 @@ export default function DocumentReports() {
         
         .bg-gray-50, .bg-blue-50, .bg-green-50, 
         .bg-yellow-50, .bg-red-50, .bg-gray-100,
-        .bg-gradient-to-br {
+        .bg-linear-to-br {
           background: white !important;
           background-image: none !important;
         }
@@ -408,7 +408,7 @@ export default function DocumentReports() {
 
       {/* Statistics Cards */}
       <div className="stats-grid grid grid-cols-1 md:grid-cols-4 gap-4 page-break-avoid">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-sm border border-blue-200 hover:shadow-md transition-shadow">
+        <div className="bg-linear-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-sm border border-blue-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-blue-600">Total Documents</p>
@@ -422,7 +422,7 @@ export default function DocumentReports() {
           </div>
         </div>
         
-        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm border border-yellow-200 hover:shadow-md transition-shadow">
+        <div className="bg-linear-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm border border-yellow-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-yellow-600">Pending Review</p>
@@ -436,7 +436,7 @@ export default function DocumentReports() {
           </div>
         </div>
         
-        <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-sm border border-green-200 hover:shadow-md transition-shadow">
+        <div className="bg-linear-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-sm border border-green-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-green-600">Approved</p>
@@ -450,7 +450,7 @@ export default function DocumentReports() {
           </div>
         </div>
         
-        <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm border border-red-200 hover:shadow-md transition-shadow">
+        <div className="bg-linear-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm border border-red-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-red-600">Rejected</p>

@@ -1,22 +1,20 @@
-import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+"use client";
+import React, { useContext, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function ProtectedRoute({ children, allowedRoles }) {
   const { user, loading } = useContext(AuthContext);
+  const router = useRouter();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    if (!loading) {
+      if (!user) router.replace('/login');
+      else if (allowedRoles && !allowedRoles.includes(user.role)) router.replace('/login');
+    }
+  }, [loading, user, allowedRoles, router]);
 
-  // If not logged in → redirect to login
-  if (!user) return <Navigate to="/login" replace />;
+  if (loading || !user) return <div>Loading...</div>;
 
-  // If role not allowed → redirect to login
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
-    return <Navigate to="/login" replace />;
-  }
-
-  // Otherwise render the page
-  return children;
+  return <>{children}</>;
 }

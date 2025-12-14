@@ -37,7 +37,7 @@ const CurrentContractCard = ({ contract, onDownload }) => {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-8 py-6">
+      <div className="bg-linear-to-r from-blue-500 to-blue-600 px-8 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
