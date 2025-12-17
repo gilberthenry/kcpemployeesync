@@ -2,12 +2,15 @@
 
 import React, { useEffect, useState } from 'react';
 import { ShieldCheck, ShieldOff, CheckCircle, AlertCircle, XCircle } from 'lucide-react';
+import misService from '../../services/misservice';
+import { ToastContext } from '../../context/ToastContext';
 
 export default function MISAccounts() {
   const [accounts, setAccounts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedAccount, setSelectedAccount] = useState(null);
+  const { showToast } = useContext(ToastContext);
 
   useEffect(() => {
     fetchAccounts();
@@ -17,13 +20,12 @@ export default function MISAccounts() {
     try {
       setLoading(true);
       console.log('Fetching accounts...');
-      // TODO: Replace with actual API call
-      const data = [];
+      const data = await misService.getAccounts();
       console.log('Accounts fetched:', data);
       setAccounts(data || []);
     } catch (err) {
       console.error('Error fetching accounts:', err);
-      alert('Failed to fetch accounts: ' + err.message);
+      showToast('Failed to fetch accounts: ' + err.message, 'error');
       setAccounts([]);
     } finally {
       setLoading(false);
@@ -34,8 +36,8 @@ export default function MISAccounts() {
     if (!selectedAccount) return;
 
     try {
-      // TODO: Replace with actual API call
-      alert(`TODO: Disable account for ${selectedAccount.fullName}`);
+      const response = await misService.disableAccount(selectedAccount.id);
+      showToast('Account disabled successfully', 'success');
       
       // Update the account in the list
       setAccounts(accounts.map(acc => 
@@ -47,14 +49,14 @@ export default function MISAccounts() {
       setShowConfirmModal(false);
       setSelectedAccount(null);
     } catch (err) {
-      alert('Failed to disable account: ' + err.message);
+      showToast('Failed to disable account: ' + err.message, 'error');
     }
   };
 
   const handleReactivateAccount = async (account) => {
     try {
-      // TODO: Replace with actual API call
-      alert(`TODO: Reactivate account for ${account.fullName}`);
+      const response = await misService.reactivateAccount(account.id);
+      showToast('Account reactivated successfully', 'success');
       
       // Update the account in the list
       setAccounts(accounts.map(acc => 
@@ -63,7 +65,7 @@ export default function MISAccounts() {
           : acc
       ));
     } catch (err) {
-      alert('Failed to reactivate account: ' + err.message);
+      showToast('Failed to reactivate account: ' + err.message, 'error');
     }
   };
 
@@ -256,3 +258,4 @@ export default function MISAccounts() {
     </div>
   );
 }
+

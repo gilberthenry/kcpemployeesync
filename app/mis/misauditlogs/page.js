@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { RefreshCw, Search, Filter, FileDown, AlertCircle } from 'lucide-react';
+import misService from '../../services/misservice';
 
 export default function MISAuditLogs() {
   const [logs, setLogs] = useState([]);
@@ -17,8 +18,7 @@ export default function MISAuditLogs() {
   const fetchAuditLogs = async () => {
     try {
       setLoading(true);
-      // TODO: Replace with actual API call
-      const data = [];
+      const data = await misService.getAuditLogs();
       setLogs(data);
     } catch (error) {
       console.error('Error fetching audit logs:', error);

@@ -1,11 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import employeeService from '../../services/employeeservice';
 import { Calendar, Clock, CheckCircle, XCircle, Plus, AlertCircle } from 'lucide-react';
-import { addDocument, getAllDocuments } from '@/app/services/firestore/util';
+import { useToast } from '../../context/ToastContext';
 
 export default function EmployeeLeaves() {
   const [leaves, setLeaves] = useState([]);
+  const [leaveCredits, setLeaveCredits] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [newLeave, setNewLeave] = useState({ 
@@ -14,23 +16,34 @@ export default function EmployeeLeaves() {
     endDate: '', 
     reason: '' 
   });
+  const { showToast } = useToast();
 
   useEffect(() => {
     fetchLeaves();
+    fetchLeaveCredits();
   }, []);
 
   const fetchLeaves = async () => {
     try {
       setLoading(true);
-      const userId = localStorage.getItem('userId') || 'demo-user';
-      const allLeaves = await getAllDocuments('leaves');
-      const userLeaves = allLeaves.filter(leave => leave.userId === userId);
-      setLeaves(userLeaves);
+      const data = await employeeService.getLeaves();
+      setLeaves(data);
     } catch (error) {
       console.error('Error fetching leaves:', error);
-      alert('Failed to load leaves');
+      showToast('Failed to load leaves', 'error');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchLeaveCredits = async () => {
+    try {
+      const data = await employeeService.getLeaveCredits();
+      console.log('Leave credits data:', data);
+      setLeaveCredits(data);
+    } catch (error) {
+      console.error('Error fetching leave credits:', error);
+      console.error('Error details:', error.response?.data || error.message);
     }
   };
 
@@ -38,33 +51,21 @@ export default function EmployeeLeaves() {
     e.preventDefault();
     
     if (!newLeave.type || !newLeave.startDate || !newLeave.endDate) {
-      alert('Please fill in all required fields');
+      showToast('Please fill in all required fields', 'error');
       return;
     }
 
     try {
       setLoading(true);
-      const userId = localStorage.getItem('userId') || 'demo-user';
-      
-      const leaveData = {
-        userId,
-        type: newLeave.type,
-        startDate: newLeave.startDate,
-        endDate: newLeave.endDate,
-        reason: newLeave.reason,
-        status: 'Pending',
-        requestedAt: new Date().toISOString()
-      };
-      
-      await addDocument('leaves', leaveData);
-      alert('Leave request submitted successfully!');
+      await employeeService.requestLeave(newLeave);
+      showToast('Leave request submitted successfully!', 'success');
       setShowForm(false);
       setNewLeave({ type: 'Sick Leave', startDate: '', endDate: '', reason: '' });
       await fetchLeaves();
     } catch (error) {
       console.error('Error requesting leave:', error);
-      const errorMessage = error.message || 'Failed to submit leave request';
-      alert(errorMessage);
+      const errorMessage = error.response?.data?.message || error.message || 'Failed to submit leave request';
+      showToast(errorMessage, 'error');
     } finally {
       setLoading(false);
     }
@@ -107,6 +108,49 @@ export default function EmployeeLeaves() {
         <h1 className="text-3xl font-bold text-gray-800">My Leaves</h1>
         <p className="text-gray-600 mt-2">Track and manage your leave requests</p>
       </div>
+
+      {/* Leave Credits Summary */}
+      {leaveCredits && leaveCredits.schoolYear && (
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl shadow-lg border border-blue-100 p-6 mb-8">
+          <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+            <Calendar className="h-6 w-6 mr-2 text-blue-600" />
+            Leave Credits Summary
+            <span className="ml-3 text-sm font-normal text-gray-600">
+              (School Year: {leaveCredits.schoolYear})
+            </span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="bg-white rounded-xl p-4 border border-blue-100">
+              <div className="text-sm text-gray-600 mb-1">Total Credits</div>
+              <div className="text-2xl font-bold text-blue-600">
+                {leaveCredits.totalCredits || 0}
+              </div>
+              <div className="text-xs text-gray-500 mt-1">days allocated</div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-orange-100">
+              <div className="text-sm text-gray-600 mb-1">Used Credits</div>
+              <div className="text-2xl font-bold text-orange-600">
+                {leaveCredits.usedCredits || 0}
+              </div>
+              <div className="text-xs text-gray-500 mt-1">days taken</div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-green-100">
+              <div className="text-sm text-gray-600 mb-1">Remaining Credits</div>
+              <div className="text-2xl font-bold text-green-600">
+                {leaveCredits.remainingCredits || 0}
+              </div>
+              <div className="text-xs text-gray-500 mt-1">days available</div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-purple-100">
+              <div className="text-sm text-gray-600 mb-1">Carried Over</div>
+              <div className="text-2xl font-bold text-purple-600">
+                {leaveCredits.carriedOverCredits || 0}
+              </div>
+              <div className="text-xs text-gray-500 mt-1">from previous year</div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Leave Application Form */}
       {showForm && (

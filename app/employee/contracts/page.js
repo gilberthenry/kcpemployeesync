@@ -3,16 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import CurrentContractCard from '../../components/currentcontractcard/page';
 import PastContractsTable from '../../components/pastcontractstable/page';
+import contractService from '../../services/contractservice';
 import CertificateRequestForm from '../../components/certificaterequestform/page';
 import CertificateStatus from '../../components/certificatestatus/page';
 import { addDocument, getAllDocuments } from '@/app/services/firestore/util';
+import { useToast } from '../../context/ToastContext';
 
 export default function EmployeeContracts() {
   const [currentContract, setCurrentContract] = useState(null);
   const [pastContracts, setPastContracts] = useState([]);
-  const [certificateRequests, setCertificateRequests] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
+  const { showToast } = useToast();
 
   useEffect(() => {
     fetchData();
@@ -21,27 +22,16 @@ export default function EmployeeContracts() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const userId = localStorage.getItem('userId') || 'demo-user';
+      const [currentRes, pastRes] = await Promise.all([
+        contractService.getCurrentContract().catch(() => ({ data: null })),
+        contractService.getPastContracts().catch(() => ({ data: [] }))
+      ]);
       
-      // Fetch all contracts
-      const allContracts = await getAllDocuments('contracts');
-      const userContracts = allContracts.filter(c => c.userId === userId);
-      
-      // Find current (active) contract
-      const current = userContracts.find(c => c.status === 'active');
-      setCurrentContract(current || null);
-      
-      // Get past contracts
-      const past = userContracts.filter(c => c.status !== 'active');
-      setPastContracts(past);
-      
-      // Fetch certificate requests
-      const allCertRequests = await getAllDocuments('certificateRequests');
-      const userCertRequests = allCertRequests.filter(r => r.userId === userId);
-      setCertificateRequests(userCertRequests);
+      setCurrentContract(currentRes.data);
+      setPastContracts(pastRes.data);
     } catch (error) {
       console.error('Failed to fetch contract data:', error);
-      alert('Failed to load contract information');
+      showToast('Failed to load contract information', 'error');
     } finally {
       setLoading(false);
     }
@@ -49,49 +39,23 @@ export default function EmployeeContracts() {
 
   const handleDownloadContract = async (contractId) => {
     try {
-      // TODO: Replace with actual API call
-      alert(`TODO: Download contract ${contractId}`);
+      const response = await contractService.downloadContract(contractId);
+      
+      // Create blob from response
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `contract_${contractId}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
+      showToast('Contract downloaded successfully', 'success');
     } catch (error) {
       console.error('Failed to download contract:', error);
-      alert('Failed to download contract');
-    }
-  };
-
-  const handleRequestCertificates = async (selectedCertificates) => {
-    try {
-      setSubmitting(true);
-      const userId = localStorage.getItem('userId') || 'demo-user';
-      
-      const requestData = {
-        userId,
-        certificates: selectedCertificates,
-        status: 'Pending',
-        requestedAt: new Date().toISOString()
-      };
-      
-      await addDocument('certificateRequests', requestData);
-      alert('Certificate request submitted successfully!');
-      
-      // Refresh certificate requests
-      const allCertRequests = await getAllDocuments('certificateRequests');
-      const userCertRequests = allCertRequests.filter(r => r.userId === userId);
-      setCertificateRequests(userCertRequests);
-    } catch (error) {
-      console.error('Failed to request certificates:', error);
-      const errorMessage = error.message || 'Failed to submit certificate request';
-      alert(errorMessage);
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  const handleDownloadCertificate = async (certificateId) => {
-    try {
-      // TODO: Replace with actual API call
-      alert(`TODO: Download certificate ${certificateId}`);
-    } catch (error) {
-      console.error('Failed to download certificate:', error);
-      alert('Failed to download certificate');
+      showToast('Failed to download contract', 'error');
     }
   };
 
@@ -130,18 +94,6 @@ export default function EmployeeContracts() {
         <PastContractsTable 
           contracts={pastContracts}
           onDownload={handleDownloadContract}
-        />
-
-        {/* Certificate Request Section */}
-        <CertificateRequestForm 
-          onSubmit={handleRequestCertificates}
-          loading={submitting}
-        />
-
-        {/* Certificate Status Section */}
-        <CertificateStatus 
-          requests={certificateRequests}
-          onDownload={handleDownloadCertificate}
         />
       </div>
     </div>
